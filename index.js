@@ -3,7 +3,12 @@ const express = require("express");
 
 const app = express();
 
-const PORT = parseInt(process.env.PORT) || 3000;
+
+let PORT;
+if (process.env.NODE_ENV === "production")
+    PORT = parseInt(process.env.PORT) || 80;
+else
+    PORT = parseInt(process.env.PORT) || 3000;
 
 /**
  * @typedef {{name: string, phone: string, email: string}} Table
